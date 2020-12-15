@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Product Add</ion-title>
+    <ion-buttons slot="end">
+      <ion-button
+        class="buttons"
+        aria-disabled="#productAddForm.invalid"
+        (click)="onSaveClick()"
+      >
+        Save</ion-button
+      >
+      <ion-button class="buttons" [routerLink]="['/home']"> Cancel </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form
+    class="addForm"
+    (ngSubmit)="onSubmit(productAddForm)"
+    #productAddForm="ngForm"
+  >
+    <div>
+      <label>SKU</label>
+      <input type="text" name="sku" ngModel required />
+    </div>
+    <div>
+      <label>Name</label>
+      <input type="text" name="name" ngModel required />
+    </div>
+    <div>
+      <label>Price ($)</label>
+      <input type="number" name="price" ngModel required />
+    </div>
+    <div>
+      <label>Type</label>
+      <select name="type" ng-model="type" id="type" ngModel required>
+        <option value="dvd" selected>DVD-disk</option>
+        <option value="book">Book</option>
+        <option value="furniture">Furniture</option>
+      </select>
+    </div>
+
+    <div *ngIf="productAddForm.type == 'dvd'">
+     type1 =  {{ productAddForm.type }}
+    </div>
+    type2 = {{ productAddForm.type }}
+  </form>
+  type3 = {{ productAddForm.type }}
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="footerText">Scandiweb test assignment</ion-title>
+  </ion-toolbar>
+</ion-footer>
