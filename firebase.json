@@ -1,0 +1,18 @@
+{
+  "rulesFile": "database.rules.json",
+  "hosting": {
+    "site": "ksenia-test-task",
+    "public": "www",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

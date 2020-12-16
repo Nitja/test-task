@@ -14,7 +14,21 @@
   <ion-grid class="grid">
     <ion-row>
       <ion-col *ngFor="let product of products" class="productShow" size="2">
-        {{ product.title }}
+        {{ product.sku }}
+        <br>
+        {{ product.name }}
+        <br>
+        {{ product.price }} $
+        <br>
+        <div *ngIf="product.type == 'dvd'">
+          Size: {{ product.size }} MB
+        </div>
+        <div *ngIf="product.type == 'book'">
+          Dimension: {{ product.height }} x {{ product.width }} x {{ product.length }}
+        </div>
+        <div *ngIf="product.type == 'furniture'">
+          Weight: {{ product.weight }}KG
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

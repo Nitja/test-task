@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatabaseService } from "../database/database.service";
 
 @Component({
   selector: 'app-home',
@@ -12,13 +13,15 @@ export class HomePage {
   constructor() {}
 
   ionViewDidEnter() {
-    this.products = [
-        { title: 'Notatka 1', description: 'Opis notatki 1' },
-        { title: 'Notatka 2', description: 'Opis notatki 2' },
-        { title: 'Notatka 3', description: 'Opis notatki 3' }
-    ];
+    // this.products = [
+    //     { sku: "JVC200123", name: 'Acme DISC', price: '100', type: "DVD-disk", attribute: "700", unit: "MB" },
+    //     { sku: "JVC200123", name: 'Acme DISC', price: '100', type: "DVD-disk", attribute: "700", unit: "MB"  },
+    //     { sku: "JVC200123", name: 'Acme DISC', price: '100', type: "DVD-disk", attribute: "700", unit: "MB"  }
+    // ];
     //tut schitat iz bazq || [] 
     //console.log (this.products);
+
+    this.products = JSON.parse(localStorage.getItem("products")) || [];
 }
 
 }

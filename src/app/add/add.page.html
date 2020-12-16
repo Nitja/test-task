@@ -4,8 +4,8 @@
     <ion-buttons slot="end">
       <ion-button
         class="buttons"
-        aria-disabled="#productAddForm.invalid"
-        (click)="onSaveClick()"
+        [disabled]="productAddForm.invalid"
+        (click)="onSaveClick(productAddForm)"
       >
         Save</ion-button
       >
@@ -17,11 +17,10 @@
 <ion-content>
   <form
     class="addForm"
-    (ngSubmit)="onSubmit(productAddForm)"
     #productAddForm="ngForm"
   >
     <div>
-      <label>SKU</label>
+      <label class="label">SKU</label>
       <input type="text" name="sku" ngModel required />
     </div>
     <div>
@@ -34,21 +33,39 @@
     </div>
     <div>
       <label>Type</label>
-      <select name="type" ng-model="type" id="type" ngModel required>
+      <select name="type" ng-model="type" id="type" [(ngModel)]="type" required>
         <option value="dvd" selected>DVD-disk</option>
         <option value="book">Book</option>
         <option value="furniture">Furniture</option>
       </select>
     </div>
 
-    <div *ngIf="productAddForm.type == 'dvd'">
-     type1 =  {{ productAddForm.type }}
+    <div *ngIf="productAddForm.value.type == 'dvd'">
+      <label>Size (MB)</label>
+      <input type="number" name="size" ngModel required />
+      <br />
+      <label class="description">Please provide the size in MB</label>
     </div>
-    type2 = {{ productAddForm.type }}
+    <div *ngIf="productAddForm.value.type == 'book'">
+      <label>Height (CM)</label>
+      <input type="number" name="height" ngModel required />
+      <br />
+      <label>Width (CM)</label>
+      <input type="number" name="width" ngModel required />
+      <br />
+      <label>Length (CM)</label>
+      <input type="number" name="length" ngModel required />
+      <br />
+      <label class="description">Please provide dimensions in HxWxL format</label>
+    </div>
+    <div *ngIf="productAddForm.value.type == 'furniture'">
+      <label>Weight (KG)</label>
+      <input type="number" name="weight" ngModel required />
+      <br />
+      <label class="description">Please provide the weight in kg</label>
+    </div>
   </form>
-  type3 = {{ productAddForm.type }}
 </ion-content>
-
 
 <ion-footer>
   <ion-toolbar>

@@ -1,5 +1,17 @@
 .addForm {
-    background-color: lightblue;
-    margin: 5%;
-    //padding: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+label {
+    font-size: 18px;
+    margin-left: 20px;
+    margin-top: 20px;
+
+    width: 140px;
+    display: inline-block;
+}
+.description {
+    text-align: center;
+    font-size: 14px;
+    width: 340px;
 }

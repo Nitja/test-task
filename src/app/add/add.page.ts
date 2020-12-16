@@ -1,25 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from "@angular/core";
+import { NgForm } from "@angular/forms";
+import { DatabaseService } from "../database/database.service";
 
 @Component({
-  selector: 'app-add',
-  templateUrl: './add.page.html',
-  styleUrls: ['./add.page.scss'],
+  selector: "app-add",
+  templateUrl: "./add.page.html",
+  styleUrls: ["./add.page.scss"],
 })
-export class AddPage implements OnInit {
+export class AddPage {
+  newProduct;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-    //console.log();
-  }
+  onSaveClick(form: NgForm) {
+    console.log(form.value);
 
-  onSubmit(form) {
-    // let products = JSON.parse(localStorage.getItem("products")) || [];
-    // products.push(form.value);
-    // localStorage.setItem("products", JSON.stringify(products));
-  }
+    this.newProduct = form.value;
 
-  onSaveClick() {
-    
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    products.push(form.value);
+    localStorage.setItem("products", JSON.stringify(products));
+
+    console.log(products);
   }
 }
