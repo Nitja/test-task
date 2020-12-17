@@ -4,7 +4,7 @@
     <ion-buttons slot="end">
       <ion-button
         class="buttons"
-        [disabled]="productAddForm.invalid"
+        [disabled]="productAddForm.invalid || notUnique"
         (click)="onSaveClick(productAddForm)"
         [routerLink]="['/home']"  
       >
@@ -20,9 +20,10 @@
     class="addForm"
     #productAddForm="ngForm"
   >
+  <div *ngIf="notUnique">The SKU in not unique. Please choose an unique SKU</div>
     <div>
       <label class="label">SKU</label>
-      <input type="text" name="sku" ngModel required />
+      <input type="text" name="sku" ngModel [class.ng-invalid] = "notUnique" required (keyup)="ckechUniquness(productAddForm.value.sku)" />
     </div>
     <div>
       <label>Name</label>

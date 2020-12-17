@@ -9,6 +9,8 @@ import { DatabaseService } from "../database/database.service";
 })
 export class AddPage {
 
+  notUnique = false;
+
   constructor(private database: DatabaseService) {}
 
   onSaveClick(form: NgForm) {
@@ -20,5 +22,15 @@ export class AddPage {
     this.database.synchronizeProducts(products);
 
     form.reset();
+  }
+
+  ckechUniquness(sku) {
+    this.notUnique = false;
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    products.forEach(product => {
+      if(product.sku == sku) {
+        this.notUnique = true;
+      }
+    });
   }
 }

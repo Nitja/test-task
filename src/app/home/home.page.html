@@ -14,6 +14,7 @@
   <ion-grid class="grid">
     <ion-row>
       <ion-col *ngFor="let product of products" class="productShow" size="2">
+        <ion-checkbox [(ngModel)]="product.isChecked"></ion-checkbox>
         {{ product.sku }}
         <br>
         {{ product.name }}
