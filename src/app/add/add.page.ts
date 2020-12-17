@@ -8,19 +8,17 @@ import { DatabaseService } from "../database/database.service";
   styleUrls: ["./add.page.scss"],
 })
 export class AddPage {
-  newProduct;
 
-  constructor() {}
+  constructor(private database: DatabaseService) {}
 
   onSaveClick(form: NgForm) {
-    console.log(form.value);
-
-    this.newProduct = form.value;
 
     let products = JSON.parse(localStorage.getItem("products")) || [];
     products.push(form.value);
     localStorage.setItem("products", JSON.stringify(products));
 
-    console.log(products);
+    this.database.synchronizeProducts(products);
+
+    form.reset();
   }
 }

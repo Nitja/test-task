@@ -6,10 +6,11 @@
         class="buttons"
         [disabled]="productAddForm.invalid"
         (click)="onSaveClick(productAddForm)"
+        [routerLink]="['/home']"  
       >
         Save</ion-button
       >
-      <ion-button class="buttons" [routerLink]="['/home']"> Cancel </ion-button>
+      <ion-button class="buttons" [routerLink]="['/home']" (click)="productAddForm.reset()"> Cancel </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
