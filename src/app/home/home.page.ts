@@ -9,11 +9,15 @@ import { DatabaseService } from "../database/database.service";
 export class HomePage {
   products;
 
-  constructor() {}
+  constructor(private database: DatabaseService) {}
 
   ionViewDidEnter() {
-    this.products = JSON.parse(localStorage.getItem("products")) || [];
+    // this.products = JSON.parse(localStorage.getItem("products")) || [];
+    this.database.getProducts().subscribe((response) => {
+      this.products = response || [];
+    });
   }
+
   onMassDelete() {
     for (let i = 0; i < this.products.length; i++) {
       if (this.products[i].isChecked) {
@@ -21,5 +25,7 @@ export class HomePage {
         i--;
       }
     }
+    //localStorage.setItem("products", JSON.stringify(this.products));
+    this.database.synchronizeProducts(this.products);
   }
 }

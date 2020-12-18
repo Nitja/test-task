@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -26,26 +26,27 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
-
 ion-footer {
-    width: 90%;
-    margin: 5%;
-  }
-  
-  ion-header {
-    width: 90%;
-    margin: 5%;
-    
-  }
-  .footerText {
-      font-size: 14px;
-      text-align: center;
-  }
-  
-  .buttons {
-    border-color: black;
-    border-width: 1px;
-    border-bottom-width: 3px;
-    border-right-width: 3px;
-    border-style: solid;
-  }
+  width: 90%;
+  margin: 5%;
+  margin-top: 20px;
+}
+
+ion-header {
+  width: 90%;
+  margin: 5%;
+  margin-bottom: 20px;
+}
+
+.footerText {
+  font-size: 14px;
+  text-align: center;
+}
+
+.buttons {
+  border-color: black;
+  border-width: 1px;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+  border-style: solid;
+}
